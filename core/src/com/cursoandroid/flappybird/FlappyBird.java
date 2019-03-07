@@ -42,10 +42,17 @@ public class FlappyBird extends ApplicationAdapter {
 		velocidadeQueda++;
 
 		if (variacao > 2) variacao = 0;
+
+		if (Gdx.input.justTouched()){
+			//Gdx.app.log("toque", "toque na tela");
+			velocidadeQueda = -20;
+
+		}
+
+		if (posicaoInicialNaVertical > 0 || velocidadeQueda < 0)
+			posicaoInicialNaVertical = posicaoInicialNaVertical -  velocidadeQueda;
 		batch.begin();
 
-		if (posicaoInicialNaVertical > 0)
-		posicaoInicialNaVertical = posicaoInicialNaVertical -  velocidadeQueda;
 
 		batch.draw(fundo, 0,0,larguraDoDispositivo, alturaDoDispositivo);
 		batch.draw(passaros[(int)variacao],30,posicaoInicialNaVertical);
